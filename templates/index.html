@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Used Car Price Predictor
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+
+        <div>
+
+            <h1>
+                Used Car Price Predictor
+            </h1>
+
+            <p>
+                Estimate the market price of a used car
+                using machine learning.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <form
+            action="/predict"
+            method="POST"
+            class="prediction-form"
+        >
+
+            <div class="form-grid">
+
+
+                <!-- BRAND -->
+
+                <div class="form-group">
+
+                    <label for="brand">
+                        Car Brand
+                    </label>
+
+                    <select
+                        id="brand"
+                        name="brand"
+                        required
+                    >
+
+                        <option value="">
+                            Select Brand
+                        </option>
+
+                        {% for brand in brands %}
+
+                        <option value="{{ brand }}">
+                            {{ brand }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- MODEL -->
+
+                <div class="form-group">
+
+                    <label for="model">
+                        Car Model
+                    </label>
+
+                    <select
+                        id="model"
+                        name="model"
+                        required
+                    >
+
+                        <div class="form-group">
+
+                            <label for="model">
+                                Car Model
+                            </label>
+
+                            <select
+                                id="model"
+                                name="model"
+                                required
+                                disabled
+                            >
+
+                                <option value="">
+                                    Select Brand First
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label for="age">
+                        Car Age (Years)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="0"
+                        max="38"
+                        placeholder="Example: 5"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- KM -->
+
+                <div class="form-group">
+
+                    <label for="kmDriven">
+                        Kilometers Driven
+                    </label>
+
+                    <input
+                        type="number"
+                        id="kmDriven"
+                        name="kmDriven"
+                        min="0"
+                        max="300000"
+                        placeholder="Example: 45000"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TRANSMISSION -->
+
+                <div class="form-group">
+
+                    <label for="transmission">
+                        Transmission
+                    </label>
+
+                    <select
+                        id="transmission"
+                        name="transmission"
+                        required
+                    >
+
+                        <option value="">
+                            Select Transmission
+                        </option>
+
+                        {% for transmission in transmissions %}
+
+                        <option value="{{ transmission }}">
+                            {{ transmission }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- OWNER -->
+
+                <div class="form-group">
+
+                    <label for="owner">
+                        Owner Type
+                    </label>
+
+                    <select
+                        id="owner"
+                        name="owner"
+                        required
+                    >
+
+                        <option value="">
+                            Select Owner
+                        </option>
+
+                        {% for owner in owners %}
+
+                        <option value="{{ owner }}">
+                            {{ owner }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- FUEL -->
+
+                <div class="form-group">
+
+                    <label for="fuelType">
+                        Fuel Type
+                    </label>
+
+                    <select
+                        id="fuelType"
+                        name="fuelType"
+                        required
+                    >
+
+                        <option value="">
+                            Select Fuel Type
+                        </option>
+
+                        {% for fuel in fuel_types %}
+
+                        <option value="{{ fuel }}">
+                            {{ fuel }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="predict-button"
+            >
+
+                Predict Car Price
+
+            </button>
+
+        </form>
+
+    </main>
+
+<section class="info-section">
+
+    <h2>
+        About This Project
+    </h2>
+
+    <p>
+        This application uses a machine learning regression
+        model to estimate the asking price of a used car based
+        on its characteristics.
+    </p>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                Dataset
+            </h3>
+
+            <p>
+                8,817 cleaned used-car records.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                Algorithm
+            </h3>
+
+            <p>
+                Tuned Random Forest Regressor.
+            </p>
+
+        </div>
+
+
+                <div class="info-card">
+
+                    <h3>
+                        R² Score
+                    </h3>
+
+                    <p>
+                        0.6369
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <h3>
+                        MAE
+                    </h3>
+
+                    <p>
+                        Approximately ₹2.15 lakh.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    <footer>
+
+        <p>
+            Used Car Price Prediction |
+            Machine Learning Project
+        </p>
+
+    </footer>
+
+</div>
+
+<script>
+
+    const brandModels = {{ brand_models | tojson }};
+
+    const brandSelect =
+        document.getElementById("brand");
+
+    const modelSelect =
+        document.getElementById("model");
+
+
+    brandSelect.addEventListener(
+        "change",
+        function () {
+
+            const selectedBrand =
+                this.value;
+
+
+            modelSelect.innerHTML =
+                "";
+
+
+            if (!selectedBrand) {
+
+                modelSelect.disabled = true;
+
+                const option =
+                    document.createElement("option");
+
+                option.value = "";
+
+                option.textContent =
+                    "Select Brand First";
+
+                modelSelect.appendChild(
+                    option
+                );
+
+                return;
+            }
+
+
+            modelSelect.disabled = false;
+
+
+            const defaultOption =
+                document.createElement("option");
+
+            defaultOption.value = "";
+
+            defaultOption.textContent =
+                "Select Model";
+
+            modelSelect.appendChild(
+                defaultOption
+            );
+
+
+            const models =
+                brandModels[selectedBrand] || [];
+
+
+            models.forEach(
+                function (model) {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = model;
+
+                    option.textContent = model;
+
+                    modelSelect.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

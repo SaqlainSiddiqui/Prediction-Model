@@ -1,0 +1,31 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# CatBoost generated files
+catboost_info/
+
+# Experimental models
+models/best_used_car_price_model.pkl
+models/best_used_car_price_model_v2.pkl
+models/catboost_used_car_price_model.pkl

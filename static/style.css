@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+
+.header p {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+
+.prediction-form {
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+.form-group input,
+.form-group select {
+    padding: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+
+.predict-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.predict-button:hover {
+    background: #1d4ed8;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* RESULT PAGE */
+
+
+.result-container {
+    max-width: 700px;
+    padding-top: 80px;
+}
+
+
+.result-card,
+.error-card {
+    background: white;
+    padding: 45px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.result-label {
+    color: #6b7280;
+    font-size: 18px;
+}
+
+
+.price {
+    font-size: 48px;
+    margin: 15px 0 35px;
+}
+
+
+.car-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+
+.car-details div {
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+
+.car-details span {
+    display: block;
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+
+.car-details strong {
+    font-size: 15px;
+}
+
+
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+}
+
+
+.error-card h2 {
+    margin-bottom: 15px;
+}
+
+
+.error-card p {
+    margin-bottom: 25px;
+    color: #dc2626;
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .car-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+
+    .price {
+        font-size: 36px;
+    }
+
+}
+
+.info-section {
+    margin-top: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.info-section h2 {
+    margin-bottom: 12px;
+}
+
+
+.info-section > p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+
+.info-card {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.info-card h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+
+.info-card p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+@media (max-width: 800px) {
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.disclaimer {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 8px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
